@@ -15,7 +15,13 @@ podTemplate(yaml: '''
                   volumeMounts:
                   - name: docker-socket
                     mountPath: /var/run
-                
+                - name: docker-daemon
+                  image: docker:19.03.1-dind
+                  securityContext:
+                    privileged: true
+                  volumeMounts:
+                  - name: docker-socket
+                    mountPath: /var/run
 ''') {
   node(POD_LABEL) {
     writeFile file: 'Dockerfile', text: 'FROM scratch'
