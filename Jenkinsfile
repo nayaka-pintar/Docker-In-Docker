@@ -7,7 +7,7 @@ podTemplate(yaml: '''
                   emptyDir: {}
                 containers:
                 - name: docker
-                  image: docker:19.03.1
+                  image: docker:18.09
                   command:
                   - sleep
                   args:
@@ -16,7 +16,7 @@ podTemplate(yaml: '''
                   - name: docker-socket
                     mountPath: /var/run
                 - name: docker-daemon
-                  image: docker:19.03.1-dind
+                  image: docker:18.09-dind
                   securityContext:
                     privileged: true
                   volumeMounts:
