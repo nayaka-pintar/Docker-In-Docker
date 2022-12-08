@@ -26,7 +26,7 @@ podTemplate(yaml: '''
   node(POD_LABEL) {
     writeFile file: 'Dockerfile', text: 'FROM scratch'
     container('docker') {
-      sh 'DOCKER_BUILDKIT=1 docker build -t testingdocker --progress plain && docker ps .'
+      sh 'DOCKER_BUILDKIT=1 docker build --progress plain -t testing .'
     }
   }
 }
