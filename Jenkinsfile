@@ -26,7 +26,9 @@ podTemplate(yaml: '''
   node(POD_LABEL) {
     writeFile file: 'Dockerfile', text: 'FROM scratch'
     container('docker') {
-      sh 'DOCKER_BUILDKIT=1 docker build --progress plain -t testing .'
+      sh 'DOCKER_BUILDKIT=1 docker build --progress plain -t testingdocker:latest . && docker ps'
+      sh 'docker pull nayakasbl/php-httpd:latest'
+      sh 'docker run -p 98:80 nayakasbl/php-httpd'
     }
   }
 }
