@@ -1,21 +1,11 @@
 // Declarative //
 pipeline {
-  agent {
-  docker { image 'node:7-alpine' }
-  }
+  agent any
   stages {
-  stage('Test') {
-  steps {
-  sh 'node --version'
-  }
-  }
+    stage('Example') {
+      steps {
+        echo 'Hello World!'
+      }
+    }
   }
 }
-// Script //
-node {
-  /* Requires the Docker Pipeline plugin to be installed */
-  docker.image('node:7-alpine').inside {
-  stage('Test') {
-  sh 'node --version'
-  }
-  }
