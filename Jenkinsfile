@@ -2,6 +2,9 @@ podTemplate(yaml: '''
               apiVersion: v1
               kind: Pod
               spec:
+                volumes:
+                - name: docker-socket
+                  emptyDir: {}
                 containers:
                 - name: docker
                   image: docker:19.03.1
@@ -9,9 +12,6 @@ podTemplate(yaml: '''
                   - sleep
                   args:
                   - 99d
-                volumes:
-                - name: docker-socket
-                  emptyDir: {}
                   volumeMounts:
                   - name: docker-socket
                     mountPath: /var/run
