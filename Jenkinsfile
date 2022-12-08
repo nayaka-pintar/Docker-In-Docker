@@ -1,11 +1,12 @@
-// Declarative //
 pipeline {
-  agent any
-  stages {
-    stage('Example') {
-      steps {
-        echo 'Hello World!'
-      }
+    agent {
+        docker { image 'node:16.13.1-alpine' }
     }
-  }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
 }
